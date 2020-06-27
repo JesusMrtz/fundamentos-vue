@@ -1,0 +1,24 @@
+* En la template siempre se pone un contenedor padre.
+
+* Las computed properties nos permite definir variables con otras variables (concatenación) que estaran disponibles para nuestras templates.
+
+* Los eventos se emiten siempre desde el componente hijo al componente padre (06-emit.js)
+    - Se utiliza el valor $emit con lo siguiente $emit('nombre-metodo, valorAEmitir)
+    - Se recoge en el padre como los siguiente @nombre-metodo="metodoEnElPadre($event)"
+
+* Recuperar información del componente padre se utiliza el $parent.nombreDato (07-parent-data.js)
+
+* Recuperar información del componente hijo hacia el componente padre se utiliza un referencia en la etiqueta del componente, se le pone un nombre y se recuperar el valor por medio del nombre del dato. (08-children-data.js)
+
+
+* Los slots define el layout para poder sobrescribirlo mas adelante, alo parecido a los yield 
+
+* Los watchers es una zona del componente de VueJs que nos permite estar revisando de forma constante un dato.
+    - NOTA. Gastan mas recursos pero puedes reemplazarlos por computed properties
+
+
+* Los mixins son una forma de heredar datos para poder reutilizar información
+
+* Los filters son como los pipes en Angular
+
+* Los props son datos que se le puede introducir al componente al momento de declararlo son como los inputs en Angular

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos Vue</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="js/18-directives/01-focus.js"></script>
+    <script src="js/18-directives/02-change-styles.js"></script>
+    <script src="js/19-filters/01-currency-filter.js"></script>
+    <script src="js/01-hola-mundo.js"></script>
+    <script src="js/02-computed-properties.js"></script>
+    <script src="js/03-methods.js"></script>
+    <script src="js/04-vmodel.js"></script>
+    <script src="js/05-array-v-model.js"></script>
+    <script src="js/06-emit.js"></script>
+    <script src="js/07-parent-data.js"></script>
+    <script src="js/08-children-data.js"></script>
+    <script src="js/09-child-methods.js"></script>
+    <script src="js/10-login-form.js"></script>
+    <script src="js/11-v-for.js"></script>
+    <script src="js/12-v-if.js"></script>
+    <script src="js/13-slots.js"></script>
+    <script src="js/14-watchers.js"></script>
+    <script src="js/15-computed-properties-get-set.js"></script>
+    <!--DYNAMIC COMPONENTS-->
+    <script src="js/16-dinamyc-components/component1.js"></script>
+    <script src="js/16-dinamyc-components/component2.js"></script>
+    <script src="js/16-dinamyc-components/component3.js"></script>
+    <script src="js/16-load-dynamic-component.js"></script>
+    <script src="js/17-mixins.js"></script>
+    <script src="js/20-plugins/01-about-me.js"></script>
+    <script src="js/21-props.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Aprendiendo VueJs</h1>
+    </header>
+    <main id="app">
+        <p>{{message}}</p>
+        <message v-change-styles="{backgroundColor: 'red', color: 'white'}"></message>
+        <computed-properties></computed-properties>
+        <methods></methods>
+        <v-model></v-model>
+        <array-v-model></array-v-model>
+        <emit @show-car-brand="showCarBrandFromEmitComponent($event)"></emit>
+        <parent-data></parent-data>
+        <children-data ref="childData"></children-data>
+        <child-methods ref="childMethod"></child-methods>
+        <login-form></login-form>
+        <v-for></v-for>
+        <v-if></v-if>
+        <slots>
+            <template slot="header">
+                <h3>Sobrescribiendo el header con slots</h3>
+            </template>
+            <p>Contenido del main con slot</p>
+            <template slot="footer">
+                <p>Sobrescribiendo el footer con slot</p>
+            </template>
+        </slots>
+        <watchers></watchers>
+        <computed-properties-get-set></computed-properties-get-set>
+        <load-dynamic-component></load-dynamic-component>
+        <mixins></mixins>
+        <props name="Jesus" last-name="Martínez" v-bind:age="11"></props>
+    </main>
+
+    <script>
+        new Vue({
+            el: '#app',
+            mounted() {
+                const COMPONENT_NAME = this.$refs.childData.componentName;
+                console.log('El valor que se envia del componente hijo hacia el padre es: ', COMPONENT_NAME);
+
+                this.$refs.childMethod.showComponentName();
+
+                console.log(this.$me('Jesús', 21));
+            },
+            data() {
+                return {
+                    message: 'Hola mundo desde Vuejs',
+                    appName: 'Iniciando con VueJs'
+                }
+            },
+            methods: {
+                showCarBrandFromEmitComponent(value) {
+                    console.log('El valor del evento es: ', value);
+                }
+            }
+        })
+    </script>
+</body>
+
+</html>
